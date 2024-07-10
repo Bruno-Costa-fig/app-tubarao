@@ -3,7 +3,7 @@ import Menu from "../components/Menu";
 import { Label, Input, Form } from "./stylesLogin";
 import axios from "axios";
 
-function Lgin() {
+function Login() {
   const {
     register,
     handleSubmit,
@@ -21,6 +21,7 @@ function Lgin() {
     if (response.data) {
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("isLogado", true)
     }
   };
 
@@ -56,4 +57,4 @@ function Lgin() {
   );
 }
 
-export default Lgin;
+export default Login;

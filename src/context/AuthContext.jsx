@@ -12,12 +12,14 @@ export const AuthContextProvider = ({ children }) => {
 
     const response = await axios.post("http://localhost:3000/auth/login", data);
 
-    if (response.data) {
+    if (response.data && response.status == 200) {
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
       localStorage.setItem("isLogado", true)
       alert("Login executado com sucesso!")
       navigate("/")
+    } else {
+      alert("Não foi possível realizar o login")
     }
   };
 

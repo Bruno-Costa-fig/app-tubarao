@@ -10,7 +10,8 @@ function Menu() {
   return (
     <MenuNav>
       <NavLink to="/">Dashboard</NavLink>
-      {logado() && <NavLink to="/cadastro">Cadastro Usuário</NavLink>}
+      {/* {logado() && <NavLink to="/cadastro">Cadastro Usuário</NavLink>} */}
+      <NavLink to="/cadastro">Cadastro Usuário</NavLink>
       <NavLink to="/login">Login</NavLink>
       <NavLink to="/login" onClick={() => logout()}>Logout</NavLink>
     </MenuNav>

@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import Menu from "../components/Menu";
 import { Label, Input, Form } from "./stylesLogin";
-import axios from "axios";
+import {AuthContext} from "../context/AuthContext.jsx"
+import {useContext} from "react"
 
 function Login() {
   const {
@@ -11,19 +12,10 @@ function Login() {
     reset,
   } = useForm();
 
-  const login = async (data) => {
-    console.log(data);
+  // const contexto = useContext(AuthContext);
+  //contexto.login()
 
-    const response = await axios.post("http://localhost:3000/auth/login", data);
-
-    console.log(response.data);
-
-    if (response.data) {
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-      localStorage.setItem("isLogado", true)
-    }
-  };
+  const {login, logout} = useContext(AuthContext);
 
   return (
     <>

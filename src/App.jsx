@@ -1,10 +1,13 @@
 import './App.css'
 import Menu from './components/Menu'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import axios from "axios"
+import {AuthContext} from "./context/AuthContext"
 
 function App() {
   const [users, setUsers] = useState([])
+
+  const {logado} = useContext(AuthContext)
 
   useEffect(() => {
     async function fetchData(){
@@ -20,7 +23,7 @@ function App() {
       <Menu />
       <h1>Dashboard</h1>
 
-      {!!users && users.map((user) => (
+      {logado() && !!users && users.map((user) => (
           <div key={user.id}>
             <p>{user.nome} - {user.email}</p>
           </div>
